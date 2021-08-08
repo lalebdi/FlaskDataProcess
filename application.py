@@ -36,45 +36,34 @@ def name_output_cleanup(name_data, replacement):
     """Takes in the name value as string and replace_with arg as replacement, returns a dict with mapped name"""
     unprocessed_name = HumanName(name_data).as_dict()
     values = ['first', 'middle', 'last']
-    new_name = dict()
+    new_name = {
+        key: value for key, value in unprocessed_name.items() if value != ""
+    }
 
-    for key, value in unprocessed_name.items():
-        if value != "":
-            new_name[key] = value
 
     if all(key in new_name for key in values):
         return new_name
+    if replacement == "--original--":
+        new_name = name_data
     else:
-        if replacement == "--original--":
-            new_name = name_data
-        else:
-            new_name = dict([(key, "--blank--") for key in values])
+        new_name = dict([(key, "--blank--") for key in values])
 
     return new_name
 
 
 def extract_phone_number(num, replacement):
     """Takes in the phone number as string and replace_with arg as replacement, returns processed phone num or None"""
-    phone_num = ""
-    for i in num:
-        if i.isdigit():
-            phone_num += i
-
+    phone_num = "".join(i for i in num if i.isdigit())
     if len(phone_num) != 10:
-        if replacement == "--blank--":
-            phone_num = replacement
-        else:
-            phone_num = num
-
+        phone_num = replacement if replacement == "--blank--" else num
     return phone_num
 
 
 def process_amount(input_string, replacement):
     """Takes in input_string (amount) as a string and replace_with arg as replacement, returns the the processed str"""
-    new_amount = ""
-    for char in input_string:
-        if char.isdigit() or char == ".":
-            new_amount += char
+    new_amount = "".join(
+        char for char in input_string if char.isdigit() or char == "."
+    )
 
     if new_amount == "":
         if replacement == "--blank--":
