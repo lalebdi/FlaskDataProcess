@@ -88,7 +88,7 @@ def process_amount(input_string, replacement):
 class DataProcess(Resource):
     def get(self):
         return {"message": 'This URL will accept a POST call with the following payload : '
-                           '{value: "<value goes here>", mode: "phone || name || amount", "replace_with": "--blank-- || --original--"}'}
+                           '{"value": "<value goes here>", "mode": "phone || name || amount", "replace_with": "--blank-- || --original--"}'}
 
     def post(self):
         args = post_args.parse_args()
