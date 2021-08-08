@@ -30,7 +30,7 @@
       </ul>
     </li>
     <li><a href="#usage">Usage</a></li>
-    <li><a href="#link">Link</a></li>
+    <!-- <li><a href="#link">Link</a></li> -->
     <li><a href="#contributing">Contributing</a></li>
     <li><a href="#license">License</a></li>
     <li><a href="#contact">Contact</a></li>
@@ -146,10 +146,10 @@ OUT:  {"original_value": "Robert Lance Smith", "mode": "name", "output": {"first
 
 
 <!-- Link -->
-## Link
+<!-- ## Link
 
 [http://flaskdataprocess-env-1.eba-pnm98v4d.us-east-1.elasticbeanstalk.com/](http://flaskdataprocess-env-1.eba-pnm98v4d.us-east-1.elasticbeanstalk.com/)
-
+ -->
 
 
 
